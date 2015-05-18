@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        background-color: #F5F5F5;
+        margin: 10px 13px 10px 13px;
+    }
+    .box {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(228, 228, 228);
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        top: 7em;
+        left: 50%;
+        margin-left: -19.5em;
+        width: 39em;
+
+    }
+    .bordered {
+        border-bottom: 3px dashed #E3E3E3;
+        border-width: 1px;
+    }
+    .todos {
+        font-family: "Open Sans";
+        color: rgb(51, 51, 51);
+        font-weight: bold;
+        vertical-align: middle;
+        z-index: 50;
+        text-align:center;
+
+    }
+    .todos h1 {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    .add_button {
+        font-family: "Open Sans";
+        color: rgba(69, 69, 69, 0.702);
+        vertical-align: middle;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-weight: bold;
+        text-align: center;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.004);
+        z-index: 43;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(153, 153, 153);
+        border-radius: 5px;
+        background-image: -moz-linear-gradient( 90deg, rgb(214,213,211) 0%, rgb(223,222,221) 51%, rgb(234,233,232) 52%, rgb(235,234,233) 100%);
+        background-image: -webkit-linear-gradient( 90deg, rgb(214,213,211) 0%, rgb(223,222,221) 51%, rgb(234,233,232) 52%, rgb(235,234,233) 100%);
+        background-image: -ms-linear-gradient( 90deg, rgb(214,213,211) 0%, rgb(223,222,221) 51%, rgb(234,233,232) 52%, rgb(235,234,233) 100%);
+        box-shadow: inset 0px 2px 0px 0px rgba(255, 255, 255, 0.004);
+        width: 33%;
+        height: 3em;
+        z-index: 42;
+    }
+
+    .add_input {
+        border-style: solid;
+        border-width: 1px;
+        color: rgb(153, 153, 153);
+        border-color: rgb(183, 182, 182);
+        border-radius: 5px;
+        background-color: rgb(254, 254, 254);
+        box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 0.75), inset 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+        margin-left: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-right: 0.5em;
+        width: 60%;
+        z-index: 46;
+        height: 2.6em;
+        padding-left: 0.5em;
+    }
+    table {
+        width: 100%;
+    }
+    table tr {
+        height: 3.5em;
+    }
+    table tr:nth-child(odd) {
+        background-color: rgb(244, 247, 250);
+        z-index: 33;
+        font-size: 14px;
+        font-family: "Open Sans";
+        color: rgb(51, 51, 51);
+        text-align: left;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.004);
+    }
+
+    table tr:nth-child(even) {
+        background-color: rgb(255, 255, 255);
+        z-index: 33;
+        font-size: 14px;
+        font-family: "Open Sans";
+        color: rgb(51, 51, 51);
+        text-align: left;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.004);
+    }
+
+    .checkbox {
+        font-size: 14px;
+        font-family: "Open Sans";
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.004);
+        margin-left: 0.5em;
+    }
+
+    .checkbox_checked {
+        .checkbox;
+        color: rgb(153, 153, 153);
+        text-decoration: line-through;
+        margin-left: 0.5em;
+
+    }
+
+    .checkbox_unchecked {
+        .checkbox;
+        color: rgb(51, 51, 51);
+        margin-left: 0.5em;
+    }
+    label {
+        margin-left: 1em;
+    }
+    .bottom_block {
+        font-size: 13px;
+        font-family: "Open Sans";
+        padding-left: 1em;
+        height: 3em;
+        padding-top: 1.5em;
+        vertical-align: middle;
+    }
+
+    .mark_all {
+        text-align: right;
+        color: rgb(68, 140, 203);
+    }
+    .left_todo, .mark_all{
+        float: left;
+    }
+    .left_todo{
+        width: 50%;
+        vertical-align: middle;
+    }
+    .mark_all{
+        width: 45%;
+        padding-right: 1em;
+        align: right;
+        cursor: pointer;
+        color: rgb(68, 140, 203);
+    }
+}
+
+
+</style>
+<script src="https://fb.me/react-with-addons-0.13.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+    <div class="box" >
+        <div class="todos bordered">
+            <h1>Todos</h1>
+        </div>
+
+        <div id="container">
+    </div>
+</div>
+
+
+<script type="text/jsx" src="static/react_objects.js"></script>
+<script type="text/jsx">
+React.render(
+    <Container todo_list={{'{'}} {{ todo_list|tojson| safe }}{{'}'}} todos={{'{'}}{{ todos|tojson|safe }}{{'}'}} />,
+    document.getElementById('container')
+);
+
+</script>
+
+</body>
+</html>
+
